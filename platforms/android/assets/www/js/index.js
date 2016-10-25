@@ -29,8 +29,8 @@ var app = {
 
         console.log('Received Event: ' + id);
         
-        $(".inicio").show(0).delay(5000).hide(0);
-    	$(".banderas").delay(5000).show(0);
+        $("#logo").show(0).delay(500).hide(0);
+    	$(".banderas").delay(500).show(0);
         
     }
 };

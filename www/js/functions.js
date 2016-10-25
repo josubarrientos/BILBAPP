@@ -29,17 +29,10 @@ function language(lang) {
 	$("#instruc-1").show();
 }
 
-function instruc2() {
+function instruc() {
 	
 	$("#instruc-1").hide();
-	$("#instruc-2").show();
-	
-}
-
-function instruc3() {
-	
-	$("#instruc-2").hide();
-	$(".inicio").show();
+	$("#home-page").show();
 	
 }
 
