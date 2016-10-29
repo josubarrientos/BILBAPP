@@ -29,6 +29,14 @@ var app = {
 
         console.log('Received Event: ' + id);
         
+        var pageDiv;
+    	for(var i=1;i<=initial_pages.total;i++) {
+    		pageDiv=page.create(i);
+    		$("body").append(pageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+    	}
+        
+    	$("body").enhanceWithin();
+    	
         $("#logo").show(0).delay(500).hide(0);
     	$(".banderas").delay(500).show(0);
         

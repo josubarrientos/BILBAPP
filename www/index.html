@@ -65,25 +65,33 @@
 				<a href="" id="button-1" class="ui-btn ui-corner-all ui-btn-b" onclick=instruc()>OK</a>
 			</div>
 		</div>
+		
 		<div data-role="page" id="home-page" data-theme="a" style="display:none">
+		<div data-role="header" data-position="fixed" >
+				<h1 style="margin-left:0;margin-right:0;white-space: nowrap;overflow: visible;">Bilbapp</h1>
+			</div>
 			<div data-role="content">
-				<div class="ui-grid-c">
-					<br><br><br><br><br><br><br><br><br><br>
-					<div class="ui-block-a" style="width:25%;text-align:center;height:50px"><i class="fa fa-glass fa-4x" style="line-height:50px"></i></div>
-					<div class="ui-block-b" style="width:25%;text-align:center;height:50px"><i class="fa fa-shopping-cart fa-4x" style="line-height:50px"></i></div>
-					<div class="ui-block-c" style="width:25%;text-align:center;height:50px"><i class="fa fa-cutlery fa-4x" style="line-height:50px"></i></div>
-					<div class="ui-block-d" style="width:25%;text-align:center;height:50px"><i class="fa fa-bed fa-4x" style="line-height:50px"></i></div>
+				<div class="ui-grid-c">		
+					<br><br><br><br>	
+					<div class="ui-block-a" style="width:25%;text-align:center;height:50px"><a href="#page-1" id="home-page-1"><i class="fa fa-glass fa-4x" style="line-height:50px"></i></a></div>
+					<div class="ui-block-b" style="width:25%;text-align:center;height:50px"><a href="#page-2" id="home-page-2"><i class="fa fa-shopping-cart fa-4x" style="line-height:50px"></i></a></div>
+					<div class="ui-block-c" style="width:25%;text-align:center;height:50px"><a href="#page-3" id="home-page-3"><i class="fa fa-cutlery fa-4x" style="line-height:50px"></i></a></div>					
+					<div class="ui-block-d" style="width:25%;text-align:center;height:50px"><a href="#page-4" id="home-page-4"><i class="fa fa-bed fa-4x" style="line-height:50px"></i></a></div>
 					<div class="ui-block-a" style="width:100%;text-align:center;height:150px"><img id="logo" alt="" src="img/bilbao.jpg"/></div>
 					<div class="ui-block-b" style="width:0%;text-align:center;height:150px"></div>
 					<div class="ui-block-c" style="width:0%;text-align:center;height:150px"></div>
 					<div class="ui-block-d" style="width:0%;text-align:center;height:150px"></div>
-					<div class="ui-block-a" style="width:33%;text-align:center;height:50px"><i class="fa fa-futbol-o fa-4x" style="line-height:50px"></i></div>
-					<div class="ui-block-b" style="width:33%;text-align:center;height:50px"><i class="fa fa-building-o fa-4x" style="line-height:50px"></i></div>
-					<div class="ui-block-c" style="width:33%;text-align:center;height:50px"><i class="fa fa-subway fa-4x" style="line-height:50px"></i></div>
+					<div class="ui-block-a" style="width:33%;text-align:center;height:50px"><a href="#page-5" id="home-page-5"><i class="fa fa-futbol-o fa-4x" style="line-height:50px"></i></a></div>
+					<div class="ui-block-b" style="width:33%;text-align:center;height:50px"><a href="#page-6" id="home-page-6"><i class="fa fa-building-o fa-4x" style="line-height:50px"></i></a></div>					
+					<div class="ui-block-c" style="width:33%;text-align:center;height:50px"><a href="#page-7" id="home-page-7"><i class="fa fa-subway fa-4x" style="line-height:50px"></i></a></div>
 					<div class="ui-block-d" style="width:0%;text-align:center;height:50px"></div>
 				</div>
 			</div>
+			<div data-role="footer" data-position="fixed">
+				<h4>2016-2017</h4>
+			</div>
 		</div>
+
         <div class="app" style="display:none">
             <h1>Apache Cordova application powered by Eclipse Thym</h1>
             <div id="deviceready" class="blink">

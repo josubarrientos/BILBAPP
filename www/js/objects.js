@@ -17,9 +17,9 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-var tests = {
+var initial_pages = {
 	login: null,
-	total: 3,
+	total: 7,
 	test: [
 	       {
 	    	   	question: "Bla bla bla?",
@@ -80,60 +80,27 @@ var results = {
 
 var page = {
 	create: function(i) {
-//		alert("create1");
+		alert("create1 "+i);
 		var pageDiv=$('<div data-role="page" id="page-'+i+'"></div>');
 		var headerDiv=
 			'<div data-role="header" data-position="fixed" >'+
-				'<h1 style="margin-left:0;margin-right:0;white-space: nowrap;overflow: visible;">TTA1617_LS-EX_08v5: test5</h1>'+
+				'<h1 style="margin-left:0;margin-right:0;white-space: nowrap;overflow: visible;">Bilbapp</h1>'+
 			'</div>';
 		
 		var contentDiv=
 			'<div data-role="content">'+
-				'<h3 class="login"></h3>'+
-				'<form id="form-'+i+'">'+
-					'<fieldset data-role="controlgroup" data-iconpos="right">'+
-					'<legend id="question-'+i+'"></legend>'+
-					'<input name="radio-choice-'+i+'" id="radio-choice-'+i+'a" data-mini="true" value="0" type="radio"/>'+
-					'<label for="radio-choice-'+i+'a" id="label-radio-choice-'+i+'-0"></label>'+
-					'<input name="radio-choice-'+i+'" id="radio-choice-'+i+'b" data-mini="true" value="1" type="radio"/>'+
-					'<label for="radio-choice-'+i+'b" id="label-radio-choice-'+i+'-1"></label>'+
-					'<input name="radio-choice-'+i+'" id="radio-choice-'+i+'c" data-mini="true" value="2" type="radio"/>'+
-					'<label for="radio-choice-'+i+'c" id="label-radio-choice-'+i+'-2"></label>'+
-					'<input name="radio-choice-'+i+'" id="radio-choice-'+i+'d" data-mini="true" value="3" type="radio"/>'+
-					'<label for="radio-choice-'+i+'d" id="label-radio-choice-'+i+'-3"></label>'+
-					'</fieldset>'+
-					'<div style="text-align:center;">'+
-						'<a href="" id="button-'+i+'-1" class="ui-btn ui-btn-inline ui-corner-all" onclick="check('+i+')">CHECK</a>'+
-						'<a href="" id="button-'+i+'-2" class="ui-btn ui-btn-inline ui-corner-all" style="display:none;" onclick="">ADVICE</a>'+						
-					'</div>'+
-				'</form>'+
-				'<div id="audioAdvice-'+i+'" style="display:none;">'+
-					'AUDIO ADVICE'+
-					'<audio id="audio-'+i+'" controls="controls" preload="none">'+
-						'<source id="src-audio-'+i+'" src=""/>'+
-					'</audio>'+
-				'</div>'+						
-				'<div id="videoAdvice-'+i+'" style="display:none;">'+
-					'VIDEO ADVICE'+
-					'<video id="video-'+i+'" controls="controls" width="100%" height="auto">'+						
-						'<source id="src-video-'+i+'" src="" type="video/mp4"/>'+
-					'</video>'+
-				'</div>'+
-				'<div id="imageAdvice-'+i+'" style="display:none;">'+
-					'<img id="image-'+i+'" alt="" src="" width="auto" height="auto" style="border: black 1px solid;"/>'+
-				'</div>'+				
+				'<ul data-role="listview" id="page-'+i+'-0" data-inset="true">'+
+					'<li data-icon="false"><a href="#page'+i+'-1"><i class="fa fa-info fa-3x"></i></a></li>'+
+					'<li data-icon="false"><a href="#page'+i+'-2"><i class="fa fa-map fa-3x" style="line-height:50px"></i></a></li>'+
+					'<li data-icon="false"><a href="#page'+i+'-3"><i class="fa fa-comments fa-3x" style="line-height:50px"></i></a></li>'+
+					'<li data-icon="false"><a href="#page'+i+'-4"><i class="fa fa-align-justify fa-3x" style="line-height:50px"></i></a></li>'+
+					'<li data-icon="false"><a href="#page'+i+'-5"><i class="fa fa-star fa-3x" style="line-height:50px"></i></a></li>'+
+				'</ul>'+				
 			'</div>';
 		
 		var footerDiv=
-			'<div data-role="footer" data-position="fixed">'+
-				'<div class="ui-grid-b" style="width:80%; text-align:center; font-weight:normal;">'+
-					'<div class="ui-block-a">RESULTS: </div>'+
-					'<div class="ui-block-b res-1" id="res-'+i+'-1"></div>'+
-					'<div class="ui-block-c res-2" id="res-'+i+'-2"></div>'+
-				'</div>'+			
-				'<h4>2015-2016 TTA</h4>'+
-				'<a href="#" id="prev-'+i+'" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>'+
-				'<a href="#" id="next-'+i+'" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-r ui-btn-icon-left" data-transition="turn">Next</a>'+
+			'<div data-role="footer">'
+				'<a href="#home-page" id="home-button" class="ui-btn ui-corner-all">Home</a>'
 			'</div>';
 		
 		pageDiv.append(headerDiv,contentDiv,footerDiv);
