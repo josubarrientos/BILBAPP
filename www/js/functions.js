@@ -23,82 +23,63 @@
  */
 
 function language(lang) {
-	var langua=$(lang).attr("id");
-	alert(langua);
+	langua=$(lang).attr("id");
+	//alert(langua);
 	$(".banderas").hide();
 	$("#instruc-1").show();
+	page_creation();
+
+	$('.star-group').raty({
+		  click: function(score, evt) {
+		    alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+		  }
+		});
 }
 
 function instruc() {
 	
 	$("#instruc-1").hide();
-	$("#home-page").show();
+	$("#page-home").show();
 	
 }
 
-
-function check(i) {
-//	alert("check 1");
+function page_creation() {
 	
-	results.answered++;
-	
-	var answer=$("input[name='radio-choice-"+i+"']:checked").val();
-	
-	if(answer==tests.test[i].correct) {
-		alert("CORRECT");
-		results.corrects++;
-	}
-	else {
-		alert("WRONG");
-		$("#button-"+i+"-2").attr("onclick","advice("+i+","+answer+")");
-		$("#button-"+i+"-2").css("display","block");
+	var pageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		pageDiv=page.create(i);
+		$("body").append(pageDiv); //añadimos el pagediv, con toda la pagina, al DOM
 	}
 	
-	$(".res-1").text(""+results.corrects+"/"+results.answered);
-	$(".res-2").text(""+(results.corrects*100/results.answered).toFixed(2)+"%");
+	var infopageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		infopageDiv=info_page.create(i);
+		$("body").append(infopageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
 	
-	$("label[id|='label-radio-choice-"+i+"']").each(
-		function(index) {
-			if(index!=tests.test[i].correct) { //This can be done because of appropriate "value" attributes and label-radio-choice id attributes
-				$(this).css("color","red");
-			}
-			else
-				$(this).css({"color":"white","background-color":"green","font-size":"24px"});
-		}
-	);
-
-	$("#button-"+i+"-1").attr("onclick","");
-//	alert("check 7");
+	var mappageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		mappageDiv=map_page.create(i);
+		$("body").append(mappageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
+	
+	var exppageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		exppageDiv=exp_page.create(i);
+		$("body").append(exppageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
+	
+	var forumpageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		forumpageDiv=forum_page.create(i);
+		$("body").append(forumpageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
+	
+	var califpageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		califpageDiv=calif_page.create(i);
+		$("body").append(califpageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
+	
 }
-//pI: numero de pantalla / qI: nuemro de conseojo
-function advice(pI,qI) {
-	var adv=tests.test[pI].adv[qI];
-	if(adv.endsWith("ogg")||adv.endsWith("mp3")){
-		$("#src-audio-"+pI).attr("src",adv);
-		$("#audio-"+pI).trigger("load");//provocamos que se cargue el fichero
-		$("#audioAdvice-"+pI).show();//enseñamos el elemento en pantalla
-		$("#audio-"+pI).trigger("play");
-	}
-	else{
-		if(adv.endsWith("mp4")){
-			//set video URL
-			$("#src-video-"+pI).attr("src",adv);
-			//load video
-			$("#video-"+pI).trigger("load");
-			//show video
-			$("#videoAdvice-"+pI).show();
-			//play video
-			$("#video-"+pI).trigger("play");
-		}
-		else{
-			if(adv.endsWith("jpg")||adv.endsWith("png")){
-				$("#image-"+pI).attr("src",adv);
-				$("#imageAdvice-"+pI).show();
-			}
-			else{
-				alert("ADVICE: "+adv);
-			}
-		}
-	}
-		
-}
+

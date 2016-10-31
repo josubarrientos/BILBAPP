@@ -27,22 +27,22 @@
     	
 		<div class="ui-grid-b banderas flags" style="display:none">
 			<div class="ui-block-a resize">
-				<img id="image-euskadi" onclick=language(this) width="100%" src="img/euskadi.jpg"/>
+				<img id="euskadi" onclick=language(this) width="100%" src="img/euskadi.jpg"/>
 			</div>
 			<div class="ui-block-b resize">
-				<img id="image-galicia" onclick=language(this) width="100%" src="img/galicia.jpg"/>
+				<img id="galicia" onclick=language(this) width="100%" src="img/galicia.jpg"/>
 			</div>
 			<div class="ui-block-c resize">
-				<img id="image-catalunia" onclick=language(this) width="100%" src="img/catalunia.png"/>
+				<img id="catalunia" onclick=language(this) width="100%" src="img/catalunia.png"/>
 			</div>
 			<div class="ui-block-a resize">
-				<img id="image-spain" onclick=language(this) width="100%" src="img/spain.png"/>
+				<img id="spain" onclick=language(this) width="100%" src="img/spain.png"/>
 			</div>
 			<div class="ui-block-b resize">
-				<img id="image-england" onclick=language(this) width="100%" src="img/england.png"/>
+				<img id="england" onclick=language(this) width="100%" src="img/england.png"/>
 			</div>
 			<div class="ui-block-c resize">
-				<img id="image-france" onclick=language(this) width="100%" src="img/france.jpg"/>
+				<img id="france" onclick=language(this) width="100%" src="img/france.jpg"/>
 			</div>
 		</div>
 		<div data-role="page" data-dialog="true" id="instruc-1" data-close-btn="none" style="display:none">
@@ -66,13 +66,13 @@
 			</div>
 		</div>
 		
-		<div data-role="page" id="home-page" data-theme="a" style="display:none">
+		<div data-role="page" id="page-home" data-theme="a" style="display:none">
 		<div data-role="header" data-position="fixed" >
-				<h1 style="margin-left:0;margin-right:0;white-space: nowrap;overflow: visible;">Bilbapp</h1>
+				<h1 style="text-align:center">BILBAPP</h1>
 			</div>
 			<div data-role="content">
 				<div class="ui-grid-c">		
-					<br><br><br><br>	
+					<br><br><br><br><br>
 					<div class="ui-block-a" style="width:25%;text-align:center;height:50px"><a href="#page-1" id="home-page-1"><i class="fa fa-glass fa-4x" style="line-height:50px"></i></a></div>
 					<div class="ui-block-b" style="width:25%;text-align:center;height:50px"><a href="#page-2" id="home-page-2"><i class="fa fa-shopping-cart fa-4x" style="line-height:50px"></i></a></div>
 					<div class="ui-block-c" style="width:25%;text-align:center;height:50px"><a href="#page-3" id="home-page-3"><i class="fa fa-cutlery fa-4x" style="line-height:50px"></i></a></div>					
@@ -87,11 +87,8 @@
 					<div class="ui-block-d" style="width:0%;text-align:center;height:50px"></div>
 				</div>
 			</div>
-			<div data-role="footer" data-position="fixed">
-				<h4>2016-2017</h4>
-			</div>
 		</div>
-
+		
         <div class="app" style="display:none">
             <h1>Apache Cordova application powered by Eclipse Thym</h1>
             <div id="deviceready" class="blink">
@@ -102,6 +99,8 @@
 		<script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/objects.js"></script>        
         <script type="text/javascript" src="js/functions.js"></script>        
-        <script type="text/javascript" src="js/index.js"></script>    
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>    
     </body>
 </html>

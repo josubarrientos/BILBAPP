@@ -9,6 +9,10 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "eus.ehu.intel.tta.bilbapp"
+        },
+        "plugin.google.maps": {
+            "API_KEY_FOR_ANDROID": "AIzaSyDLNscK7Ao1_LklTCLL_-QMWQUbiJ5ZEEQ",
+            "PACKAGE_NAME": "eus.ehu.intel.tta.bilbapp"
         }
     },
     "dependent_plugins": {}
