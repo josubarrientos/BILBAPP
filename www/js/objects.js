@@ -1,17 +1,14 @@
 /*
- * $Id: objects.js Oct 9, 2016 9:45:18 AM tta1617$
  * 
- * Copyright (C) 2016 Maider Huarte Arrayago
+ * Copyright (C) 2016 Josu Barrientos Bahamonde
  * 
- * TTA1617_LS-EX_08v5_www.zip is based on templates by Eclipse.org - Thym and it is intended
- * for learning purposes only.
  * 
- * TTA1617_LS-EX_08v5_www.zip is free software: you can redistribute it and/or modify it under
+ * BILBAPP is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 3 of the License, or (at your option) any later
  * version.
  * 
- * TTA1617_LS-EX_08v5_www.zip is distributed in the hope that it will be useful, but WITHOUT
+ * BILBAPP is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
  * <http://www.gnu.org/licenses/>.
@@ -19,57 +16,7 @@
 
 var initial_pages = {
 	login: null,
-	total: 7,
-	test: [
-	       {
-	    	   	question: "Bla bla bla?",
-	    	   	resp: [
-	    	          "Response 0-A",
-	    	          "Response 0-B",
-	    		      "Response 0-C",
-	    		      "Response 0-D"
-	    		      ],
-	    		correct: "1",
-	    		adv: [
-	    	          "audio/ADV_0_0.ogg",
-	    	          "",
-	    		      "Advice 0-C",
-	    		      "Advice 0-D"
-	    		     ]
-	       },
-	       {
-	    	   	question: "Ble ble ble?",
-	    	   	resp: [
-	    	          "Response 1-A",
-	    	          "Response 1-B",
-	    		      "Response 1-C",
-	    		      "Response 1-D"
-	    		      ],
-	    		correct: "3",
-	    		adv: [
-	    	          "video/ADV_1_0.mp4",
-	    	          "Advice 1-B",
-	    		      "Advice 1-C",
-	    		      ""
-	    		     ]	      
-	       },
-	       {
-	    	   	question: "Bli bli bli?",
-	    	   	resp: [
-	    	          "Response 2-A",
-	    	          "Response 2-B",
-	    		      "Response 2-C",
-	    		      "Response 2-D"
-	    		      ],
-	    		correct: "0",
-	    		adv: [
-	    	          "",
-	    	          "img/ADV_2_1.jpg",
-	    		      "img/ADV_2_2.png",
-	    		      "Advice 2-D"
-	    		     ]
-	       }
-	 ]
+	total: 7
 };
 
 var places = {
@@ -79,6 +26,15 @@ var places = {
 		spain: ["Bares","Compras","Restaurantes","Hostales","Deportes","Monumentos","Transportes"],
 		england: ["Bars","Shopping","Restaurants","Inns","Sports","Monuments","trasnports"],
 		france: ["Bar","Erosketak","Restaurantea","Aterpea","Kirola","Monumentuak","Garraioak"]
+	};
+
+var instrucciones = {
+		euskadi: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
+		galicia: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
+		catalunia: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
+		spain: ["Lista de elementos","Mapas","Traducciones","Experiencias Compartidas","Opiniones"],
+		england: ["Elemment LIst","Maps","Translations","Experiences","Reviews"],
+		france: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"]
 	};
 
 var expresiones = {	
@@ -148,6 +104,86 @@ var results = {
 	answered: 0
 };
 
+//Instrucciones
+
+var instruct_page = {
+		create: function() {
+			var instruc = instrucciones[langua];
+			var pageDiv=$('<div data-role="page" data-dialog="true" data-close-btn="none" id="instruction-page-2"></div>');
+			var headerDiv=
+				'<div data-role="header" data-position="fixed" >'+
+					'<h1 style="margin-left:0;margin-right:0;white-space: nowrap;overflow: visible;">Bilbapp</h1>'+
+				'</div>';
+			
+			var contentDiv=
+				'<div data-role="content">'+
+					'<div class="ui-grid-a">'+
+						'<div class="ui-block-a" style="width:10%;text-align:center;height:50px"><i class="fa fa-info fa-3x" style="line-height:50px"></i></div>'+
+						'<div class="ui-block-b" style="width:90%;text-align:center;height:50px;line-height: 50px">'+instruc[0]+'</div>'+
+						'<div class="ui-block-a" style="width:10%;text-align:center;height:50px"><i class="fa fa-map fa-3x" style="line-height:50px"></i></div>'+
+						'<div class="ui-block-b" style="width:90%;text-align:center;height:50px;line-height: 50px">'+instruc[1]+'</div>'+
+						'<div class="ui-block-a" style="width:10%;text-align:center;height:50px"><i class="fa fa-comments fa-3x" style="line-height:50px"></i></div>'+
+						'<div class="ui-block-b" style="width:90%;text-align:center;height:50px;line-height: 50px">'+instruc[2]+'</div>'+
+						'<div class="ui-block-a" style="width:10%;text-align:center;height:50px"><i class="fa fa-align-justify fa-3x" style="line-height:50px"></i></div>'+
+						'<div class="ui-block-b" style="width:90%;text-align:center;height:50px;line-height: 50px">'+instruc[3]+'</div>'+
+						'<div class="ui-block-a" style="width:10%;text-align:center;height:50px"><i class="fa fa-star fa-3x" style="line-height:50px"></i></div>'+
+						'<div class="ui-block-b" style="width:90%;text-align:center;height:50px;line-height: 50px">'+instruc[4]+'</div>'+
+					'</div>'+
+					'<a href="#page-home" id="button-1" class="ui-btn ui-corner-all ui-btn-b">OK</a>'+
+				'</div>';
+
+			
+			pageDiv.append(headerDiv,contentDiv);
+			
+//			alert("create2");
+			return pageDiv;
+		},
+
+	};
+
+
+//Home-Page
+
+var home_page = {
+		create: function() {
+			var pageDiv=$('<div data-role="page" id="page-home" data-theme="a">');
+			var headerDiv=
+				'<div data-role="header" data-position="fixed" >'+
+					'<h1 style="text-align:center">BILBAPP</h1>'+
+				'</div>';
+			
+			var contentDiv=
+				'<div data-role="content" style="position:absolute;width:100%">'+
+					'<div class="ui-grid-c">'+		
+						'<br><br><br><br><br><br>'+
+						'<div class="ui-block-a" style="width:18%;text-align:center;height:50px"><a href="#page-1" id="home-page-1"><i class="fa fa-glass fa-4x" style="line-height:50px"></i></a></div>'+
+						'<div class="ui-block-b" style="width:25%;text-align:center;height:50px"><a href="#page-2" id="home-page-2"><i class="fa fa-shopping-cart fa-4x" style="line-height:50px"></i></a></div>'+
+						'<div class="ui-block-c" style="width:25%;text-align:center;height:50px"><a href="#page-3" id="home-page-3"><i class="fa fa-cutlery fa-4x" style="line-height:50px"></i></a></div>'+		
+						'<div class="ui-block-d" style="width:25%;text-align:center;height:50px"><a href="#page-4" id="home-page-4"><i class="fa fa-bed fa-4x" style="line-height:50px"></i></a></div>'+
+						'<div class="ui-block-a" style="width:93%;text-align:center;height:150px"><img id="logo-2" alt="" src="img/bilbao.jpg"/></div>'+
+						'<div class="ui-block-b" style="width:0%;text-align:center;height:150px"></div>'+
+						'<div class="ui-block-c" style="width:0%;text-align:center;height:150px"></div>'+
+						'<div class="ui-block-d" style="width:0%;text-align:center;height:150px"></div>'+
+						'<div class="ui-block-a" style="width:26%;text-align:center;height:60px"><a href="#page-5" id="home-page-5"><i class="fa fa-futbol-o fa-4x" style="line-height:50px"></i></a></div>'+
+						'<div class="ui-block-b" style="width:33%;text-align:center;height:60px"><a href="#page-6" id="home-page-6"><i class="fa fa-building-o fa-4x" style="line-height:50px"></i></a></div>'+					
+						'<div class="ui-block-c" style="width:33%;text-align:center;height:60px"><a href="#page-7" id="home-page-7"><i class="fa fa-subway fa-4x" style="line-height:50px"></i></a></div>'+
+						'<div class="ui-block-d" style="width:0%;text-align:center;height:60px"></div>'+
+					'</div>'+
+				'</div>';
+
+			
+			pageDiv.append(headerDiv,contentDiv);
+			
+//			alert("create2");
+			return pageDiv;
+		},
+
+	};
+
+
+
+/////Option Lists
+
 var page = {
 	create: function(i) {
 		var pageDiv=$('<div data-role="page" id="page-'+i+'"></div>');
@@ -177,21 +213,7 @@ var page = {
 //		alert("create2");
 		return pageDiv;
 	},
-	load: function(i) {
-//		alert("load1");
-		
-     	$("#question-"+i).text("QUESTION "+i+": "+tests.test[i].question);
-    	
-     	$("label[id|='label-radio-choice-"+i+"']").each(
-     			function(index) {     				
-     				$(this).text(tests.test[i].resp[index]);     				
-    		    }
-     	);
-     	
-     	$("#prev-"+i).attr("href","#page-"+(i-1));
-     	$("#next-"+i).attr("href","#page-"+(i+1));
-//			alert("load7");
- 	}
+
 };
 
 /////////Información
@@ -207,54 +229,58 @@ var info_page = {
 			
 			var contentDiv=
 				'<div data-role="content" id="scrollable">'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'sdfgsdfgsd<br/>'+
-				'xcbxcvb<br/>'+
-				'zxcbad4256<br/>'+
-				'sdfgcvbertw554e62<br/>'+
-				'kjdfahdf7899845<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'sdfgsdfgsd<br/>'+
-				'xcbxcvb<br/>'+
-				'zxcbad4256<br/>'+
-				'sdfgcvbertw554e62<br/>'+
-				'kjdfahdf7899845<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'sdfgsdfgsd<br/>'+
-				'xcbxcvb<br/>'+
-				'zxcbad4256<br/>'+
-				'sdfgcvbertw554e62<br/>'+
-				'kjdfahdf7899845<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'sdfgsdfgsd<br/>'+
-				'xcbxcvb<br/>'+
-				'zxcbad4256<br/>'+
-				'sdfgcvbertw554e62<br/>'+
-				'kjdfahdf7899845<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'sdfgsdfgsd<br/>'+
-				'xcbxcvb<br/>'+
-				'zxcbad4256<br/>'+
-				'sdfgcvbertw554e62<br/>'+
-				'kjdfahdf7899845<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
-				'sdfgsdfgsd<br/>'+
-				'xcbxcvb<br/>'+
-				'zxcbad4256<br/>'+
-				'sdfgcvbertw554e62<br/>'+
-				'kjdfahdf7899845<br/>'+
-				'row asfdasd<br/>'+
-				'asdfasd<br/>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
+					'<div class="star-group">Zara<br></div>'+
+					'<div class="star-group">Carrefous<br></div>'+
+					'<div class="star-group">otros<br></div>'+
+					'<div class="star-group">nombrelargo<br></div>'+
 			'</div>';
 			
 			var footerDiv=
@@ -400,10 +426,10 @@ var calif_page = {
 			
 			var contentDiv=
 				'<div data-role="content">'+
-				'<div id="star-1" class="star-group">Zara<br></div>'+
-				'<div id="star-2" class="star-group">Carrefous<br></div>'+
-				'<div id="star-3" class="star-group">otros<br></div>'+
-				'<div id="star-4" class="star-group">nombrelargo<br></div>'+
+				'<div id="star-1" class="star-group-dina">Zara<br></div>'+
+				'<div id="star-2" class="star-group-dina">Carrefous<br></div>'+
+				'<div id="star-3" class="star-group-dina">otros<br></div>'+
+				'<div id="star-4" class="star-group-dina">nombrelargo<br></div>'+
 			'</div>';
 			
 			var footerDiv=

@@ -71,6 +71,17 @@ h1 {
     height: 100px;
 }
 
+#logo-2 {
+    position: absolute;
+    top: 65%;
+    left: 45%;
+    margin-top: -50px;
+    margin-left: -125px;
+    width: 250px;
+    height: 100px;
+}
+
+
 .flags {
 	position: relative;
 	top: 30%;

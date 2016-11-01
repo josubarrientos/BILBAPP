@@ -29,4 +29,4 @@
 		<allow-intent href="itms-apps:*" />
 	</platform>
 	
-<engine name="android" spec="5.1.1" /></widget>
+<engine name="android" spec="5.1.1"></engine></widget>

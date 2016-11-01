@@ -26,10 +26,20 @@ function language(lang) {
 	langua=$(lang).attr("id");
 	//alert(langua);
 	$(".banderas").hide();
-	$("#instruc-1").show();
 	page_creation();
-
+	
+	window.location.href = "#instruction-page-2";
+	
+	//$("#instruction-page-2")
+	
+	//$("#instruction-page-2").show();
+	
 	$('.star-group').raty({
+		  readOnly:  true,
+		  start:     3
+		});
+	
+	$('.star-group-dina').raty({
 		  click: function(score, evt) {
 		    alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
 		  }
@@ -44,6 +54,19 @@ function instruc() {
 }
 
 function page_creation() {
+	
+	var instpageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		instpageDiv=instruct_page.create(i);
+		$("body").append(instpageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
+	
+	var homepageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		homepageDiv=home_page.create(i);
+		$("body").append(homepageDiv); //añadimos el pagediv, con toda la pagina, al DOM
+	}
+	
 	
 	var pageDiv;
 	for(var i=1;i<=initial_pages.total;i++) {
@@ -82,4 +105,3 @@ function page_creation() {
 	}
 	
 }
-
