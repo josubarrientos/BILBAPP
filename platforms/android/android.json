@@ -31,7 +31,7 @@
                 "parents": {
                     "/manifest/application": [
                         {
-                            "xml": "<meta-data android:name=\"com.google.android.maps.v2.API_KEY\" android:value=\"AIzaSyDLNscK7Ao1_LklTCLL_-QMWQUbiJ5ZEEQ\" />",
+                            "xml": "<meta-data android:name=\"com.google.android.maps.v2.API_KEY\" android:value=\"AIzaSyA-YPdHDaNlb51IdyIVrV-AblkQiciYGsI\" />",
                             "count": 1
                         },
                         {
@@ -74,7 +74,7 @@
             "PACKAGE_NAME": "eus.ehu.intel.tta.bilbapp"
         },
         "plugin.google.maps": {
-            "API_KEY_FOR_ANDROID": "AIzaSyDLNscK7Ao1_LklTCLL_-QMWQUbiJ5ZEEQ",
+            "API_KEY_FOR_ANDROID": "AIzaSyA-YPdHDaNlb51IdyIVrV-AblkQiciYGsI",
             "PACKAGE_NAME": "eus.ehu.intel.tta.bilbapp"
         }
     },

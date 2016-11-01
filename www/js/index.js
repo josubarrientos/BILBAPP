@@ -39,16 +39,17 @@ var app = {
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
         
-        
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        
     	
         $("#logo").show(0).delay(500).hide(0);
     	$(".banderas").delay(500).show(0);
         
+    	//MAPS API:  AIzaSyA-YPdHDaNlb51IdyIVrV-AblkQiciYGsI
+    	
+    	
     }
 };
 

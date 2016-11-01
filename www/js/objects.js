@@ -396,13 +396,23 @@ var forum_page = {
 				'</div>';
 			
 			var contentDiv=
-				'<div data-role="content" id="google-map">'+
-				'<h1>FORO</h1>'+
+				'<div data-role="content" id="list-opiniones-'+i+'">'+
+				'<h4>user1</h4>'+
+				'<p>Todo muy bien</p>'+
+				'<hr>'+
+				'<h4>user2</h4>'+
+				'<p>Todo malisiko</p>'+
+				'<hr>'+
 			'</div>';
-			
+				
 			var footerDiv=
-				'<div data-role="footer" data-position="fixed">'
-					'<a href="#page-'+i+'" id="go_back" class="ui-btn ui-corner-all">Back</a>'
+				'<div data-role="footer" data-position="fixed">'+
+					'<form name="opiForm'+i+'" action="" method="GET">'+
+					'Introduce tu opinión <br>'+
+					'User Name<input type="text" name="userName" value=""><p>'+
+					'Opinion <input type="text" name="userOpin" value=""><p>'+
+					'<input type="button" name="button" value="Click" onClick="opinionFunction'+i+'(this.form)">'+
+					'</form>'+
 				'</div>';
 			
 			pageDiv.append(headerDiv,contentDiv,footerDiv);

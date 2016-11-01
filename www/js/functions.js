@@ -22,10 +22,6 @@ function language(lang) {
 	
 	window.location.href = "#instruction-page-2";
 	
-	//$("#instruction-page-2")
-	
-	//$("#instruction-page-2").show();
-	
 	$('.star-group').raty({
 		  readOnly:  true,
 		  start:     3
@@ -95,5 +91,72 @@ function page_creation() {
 		califpageDiv=calif_page.create(i);
 		$("body").append(califpageDiv); //añadimos el pagediv, con toda la pagina, al DOM
 	}
+	
+}
+
+function opinionFunction1(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    //alert("User name "+x);
+    //alert("Uer opiion "+y);
+
+    //var elemento = $('<p>Nuevo</p>');
+    //$('#list-opiniones-4').append(elemento);
+	
+}
+
+function opinionFunction1(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+
+    $('#list-opiniones-1').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');    
+	
+}
+
+function opinionFunction2(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-2').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction3(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-3').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction4(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-4').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction5(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+	
+	$('#list-opiniones-5').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction6(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-6').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction7(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-7').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
 	
 }

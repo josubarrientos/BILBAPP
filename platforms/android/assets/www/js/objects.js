@@ -1,17 +1,14 @@
 /*
- * $Id: objects.js Oct 9, 2016 9:45:18 AM tta1617$
  * 
- * Copyright (C) 2016 Maider Huarte Arrayago
+ * Copyright (C) 2016 Josu Barrientos Bahamonde
  * 
- * TTA1617_LS-EX_08v5_www.zip is based on templates by Eclipse.org - Thym and it is intended
- * for learning purposes only.
  * 
- * TTA1617_LS-EX_08v5_www.zip is free software: you can redistribute it and/or modify it under
+ * BILBAPP is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 3 of the License, or (at your option) any later
  * version.
  * 
- * TTA1617_LS-EX_08v5_www.zip is distributed in the hope that it will be useful, but WITHOUT
+ * BILBAPP is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
  * <http://www.gnu.org/licenses/>.
@@ -399,13 +396,23 @@ var forum_page = {
 				'</div>';
 			
 			var contentDiv=
-				'<div data-role="content" id="google-map">'+
-				'<h1>FORO</h1>'+
+				'<div data-role="content" id="list-opiniones-'+i+'">'+
+				'<h4>user1</h4>'+
+				'<p>Todo muy bien</p>'+
+				'<hr>'+
+				'<h4>user2</h4>'+
+				'<p>Todo malisiko</p>'+
+				'<hr>'+
 			'</div>';
-			
+				
 			var footerDiv=
-				'<div data-role="footer" data-position="fixed">'
-					'<a href="#page-'+i+'" id="go_back" class="ui-btn ui-corner-all">Back</a>'
+				'<div data-role="footer" data-position="fixed">'+
+					'<form name="opiForm'+i+'" action="" method="GET">'+
+					'Introduce tu opinión <br>'+
+					'User Name<input type="text" name="userName" value=""><p>'+
+					'Opinion <input type="text" name="userOpin" value=""><p>'+
+					'<input type="button" name="button" value="Click" onClick="opinionFunction'+i+'(this.form)">'+
+					'</form>'+
 				'</div>';
 			
 			pageDiv.append(headerDiv,contentDiv,footerDiv);

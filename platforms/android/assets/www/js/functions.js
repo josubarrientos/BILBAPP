@@ -1,22 +1,14 @@
 /*
- * $Id: functions.js Oct 9, 2016 9:47:15 AM tta1617$
  * 
- * Copyright (C) 2016 Maider Huarte Arrayago
+ * Copyright (C) 2016 Josu Barrientos Bahamonde
  * 
- * This file is part of TTA1617_LS-EX_08v5_www.zip.
  * 
- * TTA1617_LS-EX_08v5_www.zip is based on templates by Eclipse.org - Thym and it is intended
- * for learning purposes only.
- *     margin-top: -50px;
-    margin-left: -125px;
-    width: 250px;
-    height: 100px;
- * TTA1617_LS-EX_08v5_www.zip is free software: you can redistribute it and/or modify it under
+ * BILBAPP is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 3 of the License, or (at your option) any later
  * version.
  * 
- * TTA1617_LS-EX_08v5_www.zip is distributed in the hope that it will be useful, but WITHOUT
+ * BILBAPP is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
  * <http://www.gnu.org/licenses/>.
@@ -29,10 +21,6 @@ function language(lang) {
 	page_creation();
 	
 	window.location.href = "#instruction-page-2";
-	
-	//$("#instruction-page-2")
-	
-	//$("#instruction-page-2").show();
 	
 	$('.star-group').raty({
 		  readOnly:  true,
@@ -103,5 +91,72 @@ function page_creation() {
 		califpageDiv=calif_page.create(i);
 		$("body").append(califpageDiv); //añadimos el pagediv, con toda la pagina, al DOM
 	}
+	
+}
+
+function opinionFunction1(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    //alert("User name "+x);
+    //alert("Uer opiion "+y);
+
+    //var elemento = $('<p>Nuevo</p>');
+    //$('#list-opiniones-4').append(elemento);
+	
+}
+
+function opinionFunction1(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+
+    $('#list-opiniones-1').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');    
+	
+}
+
+function opinionFunction2(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-2').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction3(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-3').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction4(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-4').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction5(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+	
+	$('#list-opiniones-5').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction6(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-6').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
+	
+}
+
+function opinionFunction7(form) {
+	var x = form.userName.value;
+	var y = form.userOpin.value;
+    
+	$('#list-opiniones-7').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
 	
 }
