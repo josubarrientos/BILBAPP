@@ -18,15 +18,41 @@ function language(lang) {
 	langua=$(lang).attr("id");
 	//alert(langua);
 	$(".banderas").hide();
+	//querySitios();
 	page_creation();
 	
 	window.location.href = "#instruction-page-2";
 	
-	$('.star-group').raty({
-		  readOnly:  true,
-		  start:     3
-		});
+	$('.starrr-0').starrr({
+		readOnly: true,
+		rating: 0
+	});
 	
+	$('.starrr-1').starrr({
+		readOnly: true,
+		rating: 1
+	});
+	
+	$('.starrr-2').starrr({
+		readOnly: true,
+		rating: 2
+	});
+	
+	$('.starrr-3').starrr({
+		readOnly: true,
+		rating: 3
+	});
+	
+	$('.starrr-4').starrr({
+		readOnly: true,
+		rating: 4
+	});
+	
+	$('.starrr-5').starrr({
+		readOnly: true,
+		rating: 5
+	});
+		
 	$('.star-group-dina').raty({
 		  click: function(score, evt) {
 		    alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
@@ -160,3 +186,86 @@ function opinionFunction7(form) {
 	$('#list-opiniones-7').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
 	
 }
+
+function querySitiosInfo(i) {
+	
+	var recuperado = opcionesIniciales["seleccion"];
+	var elemento = recuperado[i-1];
+	
+	var contentDiv='<div data-role="content" id="scrollable">';
+	
+	$.getJSON(appConstants.requestSitiosURL()+"?opcionName="+elemento,
+			function(response,status) {
+				if(status=="success"){
+					$.each(response, function(i, field){
+			            $.each(field, function(i, field2){
+			            	elemen=field2.sitio;
+			            	//contentDiv+='<div>'+elemen+'  '+field2.puntuacion+'/5<br></div>';
+				            //contentDiv+='<div class="star-group" data-rating="4">'+elemen+'<br></div>';
+			            	contentDiv+='<div class="starrr-'+field2.puntuacion+'">'+elemen+'</div>';
+				        });
+			        });
+					
+					//listado=JSON.stringify(response, null, 2);
+					//alert(listado);
+					
+				}
+				else {
+					alert("NO RESPONSE FROM SERVER");
+				}
+
+				contentDiv+='</div>';
+				
+			}
+		);
+	
+	return contentDiv;
+	
+}
+
+function querySitiosMapa(i) {
+	
+	var recuperado = opcionesIniciales["seleccion"];
+	var elemento = recuperado[i-1];
+	
+	var contentDiv='<div data-role="content" id="scrollable">';
+	
+	$.getJSON(appConstants.requestSitiosURL()+"?opcionName="+elemento,
+			function(response,status) {
+				if(status=="success"){
+					$.each(response, function(i, field){
+			            $.each(field, function(i, field2){
+			            	elemen=field2.sitio;
+			            	contentDiv+='<option value="'+field2.direccion+'">'+elemen+'</option>';
+				        });
+			        });
+					
+				}
+				else {
+					alert("NO RESPONSE FROM SERVER");
+				}
+
+				
+				contentDiv+='</select>';
+				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genMapa("select-1-'+i+'") class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">SEARCH</a>';
+				contentDiv+='</div>';
+				
+			}
+		);
+	
+	return contentDiv;
+	
+}
+
+function genMapa(datos) {
+	
+	
+	var direccion = document.getElementById(datos).value;
+
+	window.location.href = direccion;
+	
+}
+
+
+
+

@@ -14,10 +14,24 @@
  * <http://www.gnu.org/licenses/>.
  */
 
+var appConstants = {
+	serverURL: "http://192.168.0.23:8080/BILBAPP_SERVER/",
+	requestSitiosURL: function() {
+		return this.serverURL+"rest/Bilbapp/requestSitios";
+	},
+	requestCriticasURL: function() {
+		return this.serverURL+"rest/Bilbapp/requestCriticas";
+	}
+};
+
 var initial_pages = {
 	login: null,
 	total: 7
 };
+
+var opcionesIniciales = {
+		seleccion: ["Fiesta","Compras","Restaurantes","Alojamiento","Deportes","Monumentos","Transportes"]
+	};
 
 var places = {
 		euskadi: ["Bar","Erosketak","Restaurantea","Aterpea","Kirola","Monumentuak","Garraioak"],
@@ -227,61 +241,7 @@ var info_page = {
 					'<h1">'+place[i-1]+'</h1>'+
 				'</div>';
 			
-			var contentDiv=
-				'<div data-role="content" id="scrollable">'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-					'<div class="star-group">Zara<br></div>'+
-					'<div class="star-group">Carrefous<br></div>'+
-					'<div class="star-group">otros<br></div>'+
-					'<div class="star-group">nombrelargo<br></div>'+
-			'</div>';
+			var contentDiv = querySitiosInfo(i);
 			
 			var footerDiv=
 				'<div data-role="footer" data-position="fixed">'
@@ -289,26 +249,9 @@ var info_page = {
 				'</div>';
 			
 			pageDiv.append(headerDiv,contentDiv,footerDiv);
-			
-//			alert("create2");
+
 			return pageDiv;
-		},
-		
-		load: function(i) {
-//			alert("load1");
-			
-	     	$("#question-"+i).text("QUESTION "+i+": "+tests.test[i].question);
-	    	
-	     	$("label[id|='label-radio-choice-"+i+"']").each(
-	     			function(index) {     				
-	     				$(this).text(tests.test[i].resp[index]);     				
-	    		    }
-	     	);
-	     	
-	     	$("#prev-"+i).attr("href","#page-"+(i-1));
-	     	$("#next-"+i).attr("href","#page-"+(i+1));
-//				alert("load7");
-	 	}
+		}
 
 	};
 
@@ -325,9 +268,10 @@ var map_page = {
 				'</div>';
 			
 			var contentDiv=
-				'<div data-role="content" id="google-map">'+
-				'<h1>MAPA</h1>'+
-			'</div>';
+				'<div class="ui-field-contain">'+
+				'<label for="select-1">Select:</label>'+
+				'<select name="select-1" id="select-1-'+i+'" data-theme="a">';
+				contentDiv += querySitiosMapa(i);
 			
 			var footerDiv=
 				'<div data-role="footer" data-position="fixed">'
@@ -378,7 +322,6 @@ var exp_page = {
 			
 			pageDiv.append(headerDiv,contentDiv,footerDiv);
 			
-//			alert("create2");
 			return pageDiv;
 		},
 

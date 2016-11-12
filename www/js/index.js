@@ -43,6 +43,10 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        
+        $.ajaxSetup({
+            async: false
+        });
     	
         $("#logo").show(0).delay(500).hide(0);
     	$(".banderas").delay(500).show(0);
