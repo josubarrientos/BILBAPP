@@ -45,6 +45,24 @@ var places = {
 		france: ["Fête","Courses","Restaurant","Courses","Sport","Monument","Transport"]
 	};
 
+var instrucciones_generales_titul = {
+		euskadi: "Argibideak",
+		galicia: "Instrucións",
+		catalunia: "Instruccions",
+		spain: "Instrucciones",
+		england: "Instructions",
+		france: "Instructions"
+	};
+
+var instrucciones_generales_content = {
+		euskadi: "Sakatu interesatzen zaizun logoa gai horri buruzko informazio gehiago izateko.",
+		galicia: "Prema nun logotipo para aprender sobre o mesmo.",
+		catalunia: "Pinxa en un dels logos d'interès per obtenir informació sobre el mateix.",
+		spain: "Pincha en uno de los logos de interés para obtener información sobre el mismo.",
+		england: "Click on one of the logos of interest to obtain information of the same.",
+		france: "Cliquez sur un des logos d'intérêt pour obtenir des informations sur elle."
+	};
+
 var instrucciones = {
 		euskadi: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
 		galicia: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
@@ -133,7 +151,29 @@ var criticaUsuario= {
 ///////////////
 //Instrucciones
 ///////////////
-var instruct_page = {
+var instruct_page_1 = {
+		create: function() {
+			var instruc = instrucciones[langua];
+			var pageDiv=$('<div data-role="page" data-dialog="true" data-close-btn="none" id="instruction-page-1"></div>');
+			var headerDiv=
+				'<div data-role="header" data-position="fixed" >'+
+					'<h1 style="margin-left:0;margin-right:0;white-space: nowrap;overflow: visible;">Bilbapp</h1>'+
+				'</div>';
+			
+			var contentDiv=
+				'<div data-role="content">'+
+					'<h2 style="text-align:center;">'+instrucciones_generales_titul[langua]+'</h2>'+
+					'<h4 style="text-align:center;">'+instrucciones_generales_content[langua]+'</h4>'+
+					'<a href="#instruction-page-2" id="button-1" class="ui-btn ui-corner-all ui-btn-b">OK</a>'+
+				'</div>';
+			
+			pageDiv.append(headerDiv,contentDiv);
+
+			return pageDiv;
+		},
+
+	};
+var instruct_page_2 = {
 		create: function() {
 			var instruc = instrucciones[langua];
 			var pageDiv=$('<div data-role="page" data-dialog="true" data-close-btn="none" id="instruction-page-2"></div>');
@@ -351,7 +391,7 @@ var forum_page = {
 			var footerDiv='<div data-role="footer" data-position="fixed">'+
 				'User Name: <input type="text" id="username-'+i+'" name="userName" value=""><p>'+
 				'Opinion: <input type="text" id="usercritica-'+i+'" name="userOpin" value=""><p>'+
-				'<a href="" id="button-critica-'+i+'" onclick=addCritica("select-2-'+i+'",'+i+') class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">PUBLICAR</a>'+
+				'<a href="" id="button-critica-'+i+'" onclick=addCritica("select-2-'+i+'",'+i+') class="ui-btn ui-icon-comment ui-btn-icon-left ui-corner-all">PUBLICAR</a>'+
 				'</div>';
 	
 			pageDiv.append(headerDiv,contentDiv,footerDiv);

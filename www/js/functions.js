@@ -19,7 +19,7 @@ function language(lang) {
 	$(".banderas").hide();
 	page_creation();
 	
-	window.location.href = "#instruction-page-2";
+	window.location.href = "#instruction-page-1";
 	
 	$('.starrr-0').starrr({
 		readOnly: true,
@@ -57,19 +57,25 @@ function language(lang) {
 		  }
 		});
 }
-
+/*
 function instruc() {
 	
 	$("#instruc-1").hide();
 	$("#page-home").show();
 	
 }
-
+*/
 function page_creation() {
+	
+	var instpageDiv_prim;
+	for(var i=1;i<=initial_pages.total;i++) {
+		instpageDiv_prim=instruct_page_1.create(i);
+		$("body").append(instpageDiv_prim); //añadimos el pagediv, con toda la pagina, al DOM
+	}
 	
 	var instpageDiv;
 	for(var i=1;i<=initial_pages.total;i++) {
-		instpageDiv=instruct_page.create(i);
+		instpageDiv=instruct_page_2.create(i);
 		$("body").append(instpageDiv); //añadimos el pagediv, con toda la pagina, al DOM
 	}
 	
@@ -283,7 +289,7 @@ function querySitiosCritica(i) {
 
 				
 				contentDiv+='</select>';
-				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genCriticas("select-2-'+i+'",'+i+') class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">SEARCH</a>';
+				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genCriticas("select-2-'+i+'",'+i+') class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all">SEARCH</a>';
 				contentDiv+='</div>';
 				
 			}
@@ -297,7 +303,6 @@ function genCriticas(datos,i) {
 	
 	var nombreSitio = document.getElementById(datos).value;
 	nombreSitioREG = nombreSitio.replace(/ /g,"_"); //Aplicamos REGEX para eliminar espacion de los identificadores
-	alert(nombreSitioREG);
 	
 	if(id_temporal_critica!=null){//Evaluamos si se ha creado algun scroll de criticas, y si es así se elimina.
 		
