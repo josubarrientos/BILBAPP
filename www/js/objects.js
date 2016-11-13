@@ -21,6 +21,9 @@ var appConstants = {
 	},
 	requestCriticasURL: function() {
 		return this.serverURL+"rest/Bilbapp/requestCriticas";
+	},
+	addCriticaURL: function() {
+		return this.serverURL+"rest/Bilbapp/addCriticas";
 	}
 };
 
@@ -336,28 +339,21 @@ var forum_page = {
 			var headerDiv=
 				'<div data-role="header" data-position="fixed" >'+
 					'<h1">'+place[i-1]+'</h1>'+
-				'</div>';
+				'</div>';		
 			
-			var contentDiv=
-				'<div data-role="content" id="list-opiniones-'+i+'">'+
-				'<h4>user1</h4>'+
-				'<p>Todo muy bien</p>'+
-				'<hr>'+
-				'<h4>user2</h4>'+
-				'<p>Todo malisiko</p>'+
-				'<hr>'+
-			'</div>';
+			var contentDiv='<div data-role="content" id="foro-scroll-'+i+'">'+
+				'<div class="ui-field-contain">'+
+				'<label for="select-1">Select:</label>'+
+				'<select name="select-1" id="select-2-'+i+'" data-theme="a">';
+				contentDiv += querySitiosCritica(i);			
+				contentDiv+='</div>';
 				
-			var footerDiv=
-				'<div data-role="footer" data-position="fixed">'+
-					'<form name="opiForm'+i+'" action="" method="GET">'+
-					'Introduce tu opinión <br>'+
-					'User Name<input type="text" name="userName" value=""><p>'+
-					'Opinion <input type="text" name="userOpin" value=""><p>'+
-					'<input type="button" name="button" value="Click" onClick="opinionFunction'+i+'(this.form)">'+
-					'</form>'+
+			var footerDiv='<div data-role="footer" data-position="fixed">'+
+				'User Name: <input type="text" id="username-'+i+'" name="userName" value=""><p>'+
+				'Opinion: <input type="text" id="usercritica-'+i+'" name="userOpin" value=""><p>'+
+				'<a href="" id="button-critica-'+i+'" onclick=addCritica("select-2-'+i+'",'+i+') class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">PUBLICAR</a>'+
 				'</div>';
-			
+	
 			pageDiv.append(headerDiv,contentDiv,footerDiv);
 			
 //			alert("create2");
@@ -396,5 +392,11 @@ var calif_page = {
 			return pageDiv;
 		},
 
+	};
+
+var critica= {//Objeto JSON critica
+		critica: null,
+		fecha: null,
+		user: null
 	};
 

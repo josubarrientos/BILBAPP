@@ -200,15 +200,10 @@ function querySitiosInfo(i) {
 					$.each(response, function(i, field){
 			            $.each(field, function(i, field2){
 			            	elemen=field2.sitio;
-			            	//contentDiv+='<div>'+elemen+'  '+field2.puntuacion+'/5<br></div>';
-				            //contentDiv+='<div class="star-group" data-rating="4">'+elemen+'<br></div>';
 			            	contentDiv+='<div class="starrr-'+field2.puntuacion+'">'+elemen+'</div>';
 				        });
 			        });
-					
-					//listado=JSON.stringify(response, null, 2);
-					//alert(listado);
-					
+
 				}
 				else {
 					alert("NO RESPONSE FROM SERVER");
@@ -266,6 +261,148 @@ function genMapa(datos) {
 	
 }
 
+function querySitiosCritica(i) {
+	
+	var recuperado = opcionesIniciales["seleccion"];
+	var elemento = recuperado[i-1];
+	
+	var contentDiv='<div data-role="content" id="scrollable">';
+	
+	$.getJSON(appConstants.requestSitiosURL()+"?opcionName="+elemento,
+			function(response,status) {
+				if(status=="success"){
+					$.each(response, function(i, field){
+			            $.each(field, function(i, field2){
+			            	elemen=field2.sitio;
+			            	contentDiv+='<option value="'+elemen+'">'+elemen+'</option>';
+				        });
+			        });
+					
+				}
+				else {
+					alert("NO RESPONSE FROM SERVER");
+				}
+
+				
+				contentDiv+='</select>';
+				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genCriticas("select-2-'+i+'",'+i+') class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">SEARCH</a>';
+				contentDiv+='</div>';
+				
+			}
+		);
+	
+	return contentDiv;
+	
+}
+
+function genCriticas(datos,i) {
+	
+	var nombreSitio = document.getElementById(datos).value;
+	nombreSitioREG = nombreSitio.replace(/ /g,"_"); //Aplicamos REGEX para eliminar espacion de los identificadores
+	alert(nombreSitioREG);
+	
+	if(id_temporal_critica!=null){//Evaluamos si se ha creado algun scroll de criticas, y si es así se elimina.
+		
+		var total = "#"+id_temporal_critica;
+		
+		alert(total);
+		
+		$(total).remove();
+		
+	}
+	
+	alert("he pasado");
+	
+	id_temporal_critica = "list-opiniones-"+i+"-"+nombreSitioREG;//Se crea identificador temporal para facilitar el borrado de componente
+	
+	var contentDiv='<div data-role="content" id="list-opiniones-'+i+'-'+nombreSitioREG+'">';
+	
+	$.getJSON(appConstants.requestCriticasURL()+"?sitioName="+nombreSitio,
+			function(response,status) {
+				if(status=="success"){
+					$.each(response, function(i, field){
+			            $.each(field, function(i, field2){
+			            	usuario=field2.usuario;
+			            	fecha=field2.fecha;
+			            	critica=field2.critica;
+			            	
+			            	contentDiv+='<h4>'+usuario+'</h4><h4>'+fecha+'</h4>';
+			            	contentDiv+='<p>'+critica+'</p>';
+			            	contentDiv+='<hr>';			            	
+				        });
+			        });
+					
+				}
+				else {
+					alert("NO RESPONSE FROM SERVER");
+				}
+
+				contentDiv+='</div>';
+				
+			}
+		);
+	
+	$("#foro-scroll-"+i+"").append(contentDiv);//Una vez creado el scroll se añade a la pagina
+	
+}
+
+
+
+function addCritica(datos,i) {
+	
+	var nombreSitio = document.getElementById(datos).value;
+	
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+
+	today = yyyy+'-'+mm+'-'+dd;
+
+	var user=$("#username-"+i+"").val();//coger los valores introducidos por el usuario
+	var fecha=today;
+	var critica=$("#usercritica-"+i+"").val();
+	
+	alert("Ha enviar: "+user+" "+fecha+" "+critica);
+	
+	if((user!=null&&user!="")&&(fecha!=null&&fecha!="")&&(critica!=null&&critica!="")) {	
+		critica.user=user;
+		critica.fecha=fecha;
+		critica.critica=critica;
+	
+			$.post(appConstants.addCriticaURL(),JSON.stringify(critica),//Enviar al Servidor el objeto critica,que debe ser convertido a string
+				function(data,status) {//Función callback
+					if(status=="success"){//Si la HTTP-RESPONSE es OK
+						alert("Su opinion se ha añadido");//Indicar al usuario q está dado de alta y cuál es su login
+						/*$("#newStudentDiv").hide();
+						$("#login").val(data);//Poner como valor del input para login, el login de usuario recibio
+						$("option:selected").attr("selected",false);
+						$("#select-lesson").selectmenu("refresh",true);
+						$("#button-2").hide();*/
+					}
+					else {
+						alert("NO RESPONSE FROM SERVER");
+					}			
+				},
+				"text"//Content-type esperado en HTTP-RESPONSE: text lo que se espera recibir
+			);
+	}
+	else{
+		alert("All fields are required");
+	}
+	
+	
+	
+//	alert("addStudent 2");
+}
 
 
 

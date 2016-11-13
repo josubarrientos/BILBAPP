@@ -47,6 +47,8 @@ var app = {
         $.ajaxSetup({
             async: false
         });
+        
+        id_temporal_critica = null;
     	
         $("#logo").show(0).delay(500).hide(0);
     	$(".banderas").delay(500).show(0);
