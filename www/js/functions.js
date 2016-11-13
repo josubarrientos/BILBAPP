@@ -16,9 +16,7 @@
 
 function language(lang) {
 	langua=$(lang).attr("id");
-	//alert(langua);
 	$(".banderas").hide();
-	//querySitios();
 	page_creation();
 	
 	window.location.href = "#instruction-page-2";
@@ -305,13 +303,9 @@ function genCriticas(datos,i) {
 		
 		var total = "#"+id_temporal_critica;
 		
-		alert(total);
-		
 		$(total).remove();
 		
 	}
-	
-	alert("he pasado");
 	
 	id_temporal_critica = "list-opiniones-"+i+"-"+nombreSitioREG;//Se crea identificador temporal para facilitar el borrado de componente
 	
@@ -369,24 +363,21 @@ function addCritica(datos,i) {
 
 	var user=$("#username-"+i+"").val();//coger los valores introducidos por el usuario
 	var fecha=today;
-	var critica=$("#usercritica-"+i+"").val();
+	var criticas=$("#usercritica-"+i+"").val();
 	
-	alert("Ha enviar: "+user+" "+fecha+" "+critica);
-	
-	if((user!=null&&user!="")&&(fecha!=null&&fecha!="")&&(critica!=null&&critica!="")) {	
-		critica.user=user;
-		critica.fecha=fecha;
-		critica.critica=critica;
-	
-			$.post(appConstants.addCriticaURL(),JSON.stringify(critica),//Enviar al Servidor el objeto critica,que debe ser convertido a string
+	if((user!=null&&user!="")&&(fecha!=null&&fecha!="")&&(criticas!=null&&criticas!="")) {
+		criticaUsuario.usuario=user;
+		criticaUsuario.fecha=fecha;
+		criticaUsuario.critica=criticas;
+		criticaUsuario.sitio=nombreSitio;
+		
+		
+		//alert("Ha enviar: "+criticaUsuario.usuario+" "+criticaUsuario.fecha+" "+criticaUsuario.critica+" "+criticaUsuario.sitio);
+		
+			$.post(appConstants.addCriticaURL(),JSON.stringify(criticaUsuario),//Enviar al Servidor el objeto critica,que debe ser convertido a string
 				function(data,status) {//Función callback
 					if(status=="success"){//Si la HTTP-RESPONSE es OK
-						alert("Su opinion se ha añadido");//Indicar al usuario q está dado de alta y cuál es su login
-						/*$("#newStudentDiv").hide();
-						$("#login").val(data);//Poner como valor del input para login, el login de usuario recibio
-						$("option:selected").attr("selected",false);
-						$("#select-lesson").selectmenu("refresh",true);
-						$("#button-2").hide();*/
+						alert("Su opinion se ha añadido");//Indicar al usuario que se ha publicado la opinion
 					}
 					else {
 						alert("NO RESPONSE FROM SERVER");
@@ -399,9 +390,6 @@ function addCritica(datos,i) {
 		alert("All fields are required");
 	}
 	
-	
-	
-//	alert("addStudent 2");
 }
 
 

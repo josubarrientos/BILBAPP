@@ -45,7 +45,9 @@ var app = {
         console.log('Received Event: ' + id);
         
         $.ajaxSetup({
-            async: false
+            async: false,
+            cache:false,
+            contentType:"application/json"
         });
         
         id_temporal_critica = null;
