@@ -24,6 +24,9 @@ var appConstants = {
 	},
 	addCriticaURL: function() {
 		return this.serverURL+"rest/Bilbapp/addCriticas";
+	},
+	addPuntuacionURL: function() {
+		return this.serverURL+"rest/Bilbapp/addPuntuacion";
 	}
 };
 
@@ -54,6 +57,33 @@ var instrucciones_generales_titul = {
 		france: "Instructions"
 	};
 
+var traduccion_actualizar = {
+		euskadi: "Eguneratu",
+		galicia: "Actualizar",
+		catalunia: "Actualitzar",
+		spain: "Actualizar",
+		england: "Update",
+		france: "Mettre à jour"
+	};
+
+var traduccion_publicar = {
+		euskadi: "Zabaldu",
+		galicia: "Publicar",
+		catalunia: "Publicar",
+		spain: "Publicar",
+		england: "Publish",
+		france: "Publier"
+	};
+
+var traduccion_busqueda = {
+		euskadi: "Bilatu",
+		galicia: "Busca",
+		catalunia: "Buscar",
+		spain: "Buscar",
+		england: "Search",
+		france: "Recherche"
+	};
+
 var instrucciones_generales_content = {
 		euskadi: "Sakatu interesatzen zaizun logoa gai horri buruzko informazio gehiago izateko.",
 		galicia: "Prema nun logotipo para aprender sobre o mesmo.",
@@ -65,11 +95,11 @@ var instrucciones_generales_content = {
 
 var instrucciones = {
 		euskadi: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
-		galicia: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
-		catalunia: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"],
-		spain: ["Lista de elementos","Mapas","Traducciones","Experiencias Compartidas","Opiniones"],
-		england: ["Elemment LIst","Maps","Translations","Experiences","Reviews"],
-		france: ["Elementu lista","Mapak","Itzulpenak","Esperientziak","Berrikuzpenak"]
+		galicia: ["Lista de elementos","Mapas","Traducións","Experiencias","Comentarios"],
+		catalunia: ["Llista d'elements","Mapes","Traduccions","Experiències","Opinions"],
+		spain: ["Lista de elementos","Mapas","Traducciones","Experiencias","Opiniones"],
+		england: ["Item List","Maps","Translations","Experiences","Reviews"],
+		france: ["Liste des articles","Cartes","Traductions","Expériences","Avis"]
 	};
 
 var expresiones = {	
@@ -140,6 +170,11 @@ var criticaUsuario= {
 		critica: null,
 		fecha: null,
 		usuario: null,
+		sitio: null
+	};
+
+var calificacionUsuario= {
+		calificacion: null,
 		sitio: null
 	};
 
@@ -289,8 +324,8 @@ var info_page = {
 			var contentDiv = querySitiosInfo(i);
 			
 			var footerDiv=
-				'<div data-role="footer" data-position="fixed">'
-					'<a href="#page-'+i+'" id="go_back" class="ui-btn ui-corner-all">Back</a>'
+				'<div data-role="footer" data-position="fixed" style="text-align:center">'+
+					'<a href="" id="button-refresh-'+i+'" class="ui-btn ui-icon-refresh ui-btn-icon-left ui-corner-all" onclick=regeneradorInfo()>'+traduccion_actualizar[langua]+'</a>'+
 				'</div>';
 			
 			pageDiv.append(headerDiv,contentDiv,footerDiv);
@@ -391,7 +426,7 @@ var forum_page = {
 			var footerDiv='<div data-role="footer" data-position="fixed">'+
 				'User Name: <input type="text" id="username-'+i+'" name="userName" value=""><p>'+
 				'Opinion: <input type="text" id="usercritica-'+i+'" name="userOpin" value=""><p>'+
-				'<a href="" id="button-critica-'+i+'" onclick=addCritica("select-2-'+i+'",'+i+') class="ui-btn ui-icon-comment ui-btn-icon-left ui-corner-all">PUBLICAR</a>'+
+				'<a href="" id="button-critica-'+i+'" onclick=addCritica("select-2-'+i+'",'+i+') class="ui-btn ui-icon-comment ui-btn-icon-left ui-corner-all">'+traduccion_publicar[langua]+'</a>'+
 				'</div>';
 	
 			pageDiv.append(headerDiv,contentDiv,footerDiv);
@@ -412,13 +447,7 @@ var calif_page = {
 					'<h1">'+place[i-1]+'</h1>'+
 				'</div>';
 			
-			var contentDiv=
-				'<div data-role="content">'+
-				'<div id="star-1" class="star-group-dina">Zara<br></div>'+
-				'<div id="star-2" class="star-group-dina">Carrefous<br></div>'+
-				'<div id="star-3" class="star-group-dina">otros<br></div>'+
-				'<div id="star-4" class="star-group-dina">nombrelargo<br></div>'+
-			'</div>';
+			var contentDiv = querySitiosPuntuacion(i);
 			
 			var footerDiv=
 				'<div data-role="footer" data-position="fixed">'

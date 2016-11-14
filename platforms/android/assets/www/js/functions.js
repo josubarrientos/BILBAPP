@@ -50,21 +50,23 @@ function language(lang) {
 		readOnly: true,
 		rating: 5
 	});
-		
-	$('.star-group-dina').raty({
-		  click: function(score, evt) {
-		    alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+	
+	$('.starrr-puntua').starrr({
+		change: function(e, value){
+			//alert('new rating is ' + value + " " +$( this ).text());
+			
+			if(value==undefined)//Control para eliminar efecto undefined al repetir valor de puntuacion sobre el mismo elemento
+				value=puntuacion_previa;
+			
+			addPuntuacion($( this ).text(),value);
+		    
+			puntuacion_previa=value;
+		    	
 		  }
-		});
+		})
+		
 }
-/*
-function instruc() {
-	
-	$("#instruc-1").hide();
-	$("#page-home").show();
-	
-}
-*/
+
 function page_creation() {
 	
 	var instpageDiv_prim;
@@ -124,79 +126,12 @@ function page_creation() {
 	
 }
 
-function opinionFunction1(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-    //alert("User name "+x);
-    //alert("Uer opiion "+y);
-
-    //var elemento = $('<p>Nuevo</p>');
-    //$('#list-opiniones-4').append(elemento);
-	
-}
-
-function opinionFunction1(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-
-    $('#list-opiniones-1').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');    
-	
-}
-
-function opinionFunction2(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-    
-	$('#list-opiniones-2').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
-	
-}
-
-function opinionFunction3(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-    
-	$('#list-opiniones-3').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
-	
-}
-
-function opinionFunction4(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-    
-	$('#list-opiniones-4').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
-	
-}
-
-function opinionFunction5(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-	
-	$('#list-opiniones-5').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
-	
-}
-
-function opinionFunction6(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-    
-	$('#list-opiniones-6').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
-	
-}
-
-function opinionFunction7(form) {
-	var x = form.userName.value;
-	var y = form.userOpin.value;
-    
-	$('#list-opiniones-7').append('<h4>'+x+'</h4>'+'<p>'+y+'</p>'+'<hr>');
-	
-}
-
 function querySitiosInfo(i) {
 	
 	var recuperado = opcionesIniciales["seleccion"];
 	var elemento = recuperado[i-1];
 	
-	var contentDiv='<div data-role="content" id="scrollable">';
+	var contentDiv='<div data-role="content" id="scrollable-info-'+i+'">';
 	
 	$.getJSON(appConstants.requestSitiosURL()+"?opcionName="+elemento,
 			function(response,status) {
@@ -204,7 +139,7 @@ function querySitiosInfo(i) {
 					$.each(response, function(i, field){
 			            $.each(field, function(i, field2){
 			            	elemen=field2.sitio;
-			            	contentDiv+='<div class="starrr-'+field2.puntuacion+'">'+elemen+'</div>';
+			            	contentDiv+='<div class="starrr-'+Math.round(field2.puntuacion)+'">'+elemen+'</div>';
 				        });
 			        });
 
@@ -217,6 +152,8 @@ function querySitiosInfo(i) {
 				
 			}
 		);
+	
+	//alert(contentDiv);
 	
 	return contentDiv;
 	
@@ -246,7 +183,7 @@ function querySitiosMapa(i) {
 
 				
 				contentDiv+='</select>';
-				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genMapa("select-1-'+i+'") class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">SEARCH</a>';
+				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genMapa("select-1-'+i+'") class="ui-btn ui-icon-location ui-btn-icon-left ui-corner-all">'+traduccion_busqueda[langua]+'</a>';
 				contentDiv+='</div>';
 				
 			}
@@ -289,7 +226,7 @@ function querySitiosCritica(i) {
 
 				
 				contentDiv+='</select>';
-				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genCriticas("select-2-'+i+'",'+i+') class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all">SEARCH</a>';
+				contentDiv+='<a href="" id="button-mapa-'+i+'" onclick=genCriticas("select-2-'+i+'",'+i+') class="ui-btn ui-icon-search ui-btn-icon-left ui-corner-all">'+traduccion_busqueda[langua]+'</a>';
 				contentDiv+='</div>';
 				
 			}
@@ -370,6 +307,9 @@ function addCritica(datos,i) {
 	var fecha=today;
 	var criticas=$("#usercritica-"+i+"").val();
 	
+	$("#username-"+i+"").val("")
+	$("#usercritica-"+i+"").val("");
+	
 	if((user!=null&&user!="")&&(fecha!=null&&fecha!="")&&(criticas!=null&&criticas!="")) {
 		criticaUsuario.usuario=user;
 		criticaUsuario.fecha=fecha;
@@ -396,6 +336,102 @@ function addCritica(datos,i) {
 	}
 	
 }
+
+function querySitiosPuntuacion(i) {
+	
+	var recuperado = opcionesIniciales["seleccion"];
+	var elemento = recuperado[i-1];
+	
+	var contentDiv='<div data-role="content" id="scrollable">';
+	
+	$.getJSON(appConstants.requestSitiosURL()+"?opcionName="+elemento,
+			function(response,status) {
+				if(status=="success"){
+					$.each(response, function(i, field){
+			            $.each(field, function(i, field2){
+			            	elemen=field2.sitio;
+			            	contentDiv+='<div class="starrr-puntua">'+elemen+'</div>';
+				        });
+			        });
+
+				}
+				else {
+					alert("NO RESPONSE FROM SERVER");
+				}
+
+				contentDiv+='</div>';
+				
+			}
+		);
+	
+	return contentDiv;
+	
+}
+
+function addPuntuacion(datos,i) {
+	
+	calificacionUsuario.calificacion=i;
+	calificacionUsuario.sitio=datos;
+	
+	$.post(appConstants.addPuntuacionURL(),JSON.stringify(calificacionUsuario),//Enviar al Servidor el objeto calificaicon,que debe ser convertido a string
+			function(data,status) {//Función callback
+				if(status=="success"){//Si la HTTP-RESPONSE es OK
+					alert("Su calificacion se ha añadido");//Indicar al usuario que se ha publicado la opinion
+				}
+				else {
+					alert("NO RESPONSE FROM SERVER");
+				}			
+			},
+			"text"//Content-type esperado en HTTP-RESPONSE: text lo que se espera recibir
+		);
+	
+	regeneradorInfo();
+}
+
+function regeneradorInfo() {
+	
+	var infopageDiv;
+	for(var i=1;i<=initial_pages.total;i++) {
+		var elemento = "#scrollable-info-"+i;
+		$(elemento).remove();
+		infopageDiv_part=querySitiosInfo(i);
+		element_id="#page-"+i+"-1";
+		$(element_id).append(infopageDiv_part); //añadimos el pagediv, con toda la pagina, al DOM
+		
+	}
+	
+	$('.starrr-0').starrr({
+		readOnly: true,
+		rating: 0
+	});
+	
+	$('.starrr-1').starrr({
+		readOnly: true,
+		rating: 1
+	});
+	
+	$('.starrr-2').starrr({
+		readOnly: true,
+		rating: 2
+	});
+	
+	$('.starrr-3').starrr({
+		readOnly: true,
+		rating: 3
+	});
+	
+	$('.starrr-4').starrr({
+		readOnly: true,
+		rating: 4
+	});
+	
+	$('.starrr-5').starrr({
+		readOnly: true,
+		rating: 5
+	});
+
+}
+
 
 
 
