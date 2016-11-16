@@ -16,13 +16,8 @@
     </feature>
     <allow-intent href="market:*" />
     <name>BILBAPP</name>
-    <description>
-		A sample Apache Cordova application that responds to the deviceready
-		event.
-	</description>
-    <author email="thym-dev@eclipse.org" href="http://www.eclipse.org/thym">
-		Eclipse.org - Thym
-	</author>
+    <description>Aplicación para facilitar a los turistas de Bilbao la experiencia.</description>
+    <author email="josu_barrientos@hotmail.com" href="https://es.linkedin.com/in/josubarrientos">Josu Barrientos</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

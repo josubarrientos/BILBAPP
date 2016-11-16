@@ -55,8 +55,6 @@ var app = {
         $("#logo").show(0).delay(500).hide(0);
     	$(".banderas").delay(500).show(0);
         
-    	//MAPS API:  AIzaSyA-YPdHDaNlb51IdyIVrV-AblkQiciYGsI
-    	
     	
     }
 };

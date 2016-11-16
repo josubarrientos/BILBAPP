@@ -254,12 +254,12 @@ var home_page = {
 			var contentDiv=
 				'<div data-role="content" style="position:absolute;width:100%">'+
 					'<div class="ui-grid-c">'+		
-						'<br><br><br><br><br><br>'+
+						'<br><br><br><br><br><br><br>'+
 						'<div class="ui-block-a" style="width:18%;text-align:center;height:50px"><a href="#page-1" id="home-page-1"><i class="fa fa-glass fa-4x" style="line-height:50px"></i></a></div>'+
 						'<div class="ui-block-b" style="width:25%;text-align:center;height:50px"><a href="#page-2" id="home-page-2"><i class="fa fa-shopping-cart fa-4x" style="line-height:50px"></i></a></div>'+
 						'<div class="ui-block-c" style="width:25%;text-align:center;height:50px"><a href="#page-3" id="home-page-3"><i class="fa fa-cutlery fa-4x" style="line-height:50px"></i></a></div>'+		
 						'<div class="ui-block-d" style="width:25%;text-align:center;height:50px"><a href="#page-4" id="home-page-4"><i class="fa fa-bed fa-4x" style="line-height:50px"></i></a></div>'+
-						'<div class="ui-block-a" style="width:93%;text-align:center;height:150px"><img id="logo-2" alt="" src="img/bilbao.jpg"/></div>'+
+						'<div class="ui-block-a" style="width:93%;text-align:center;height:150px"><img id="logo-2" alt="" src="img/BILBAPP.png"/></div>'+
 						'<div class="ui-block-b" style="width:0%;text-align:center;height:150px"></div>'+
 						'<div class="ui-block-c" style="width:0%;text-align:center;height:150px"></div>'+
 						'<div class="ui-block-d" style="width:0%;text-align:center;height:150px"></div>'+
