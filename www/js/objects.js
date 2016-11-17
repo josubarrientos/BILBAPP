@@ -15,7 +15,7 @@
  */
 
 var appConstants = {
-	serverURL: "http://192.168.0.23:8080/BILBAPP_SERVER/",
+	serverURL: "http://u017633.ehu.eus:28080/BILBAPP_SERVER/",
 	requestSitiosURL: function() {
 		return this.serverURL+"rest/Bilbapp/requestSitios";
 	},
